@@ -14,7 +14,8 @@ import fr.isep.oboo.model.TimeSlot
 
 @Database(
     entities = [Building::class, Floor::class, Room::class, TimeSlot::class],
-    version = 1
+    version = 1,
+    exportSchema = false
 )
 abstract class ObooDatabase: RoomDatabase()
 {
