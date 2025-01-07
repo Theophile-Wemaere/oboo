@@ -1,6 +1,8 @@
 package fr.isep.oboo.ui.components
 
 import android.app.Activity
+import android.content.Context
+import android.content.Intent
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -57,6 +59,7 @@ import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.isep.oboo.R
+import fr.isep.oboo.RoomDetailActivity
 import fr.isep.oboo.model.Room
 import fr.isep.oboo.refreshDatabase
 import fr.isep.oboo.ui.theme.ObooTheme
@@ -87,7 +90,7 @@ fun RoomsScreen(sourceActivity: Activity, menuIndex: Int, rooms: Flow<List<Room>
     {
         // Passing the modifier to the RoomList composable allows the LazyColumn to be shifted downwards
         // with a padding that is the size of the top app bar itself (so that there's no overlap)
-            contentPadding -> RoomList(rooms, modifier = Modifier.padding(contentPadding))
+            contentPadding -> RoomList(sourceActivity, rooms, modifier = Modifier.padding(contentPadding))
     }
 }
 
@@ -115,7 +118,7 @@ fun RoomFilterChip(text: String, selected: MutableState<Boolean>, selectedContai
 }
 
 @Composable
-fun RoomList(rooms: Flow<List<Room>>, modifier: Modifier = Modifier)
+fun RoomList(sourceActivity: Activity, rooms: Flow<List<Room>>, modifier: Modifier = Modifier)
 {
     Column(modifier = modifier)
     {
@@ -131,7 +134,7 @@ fun RoomList(rooms: Flow<List<Room>>, modifier: Modifier = Modifier)
             content = { room: Room ->
                 if ((showAvailableRooms.value && room.isAvailable()) || (showUnavailableRooms.value && !room.isAvailable()))
                 {
-                    RoomCard(room)
+                    RoomCard(sourceActivity, room)
                     Spacer(Modifier.size(10.dp))
                 }
             },
@@ -164,7 +167,7 @@ fun RoomList(rooms: Flow<List<Room>>, modifier: Modifier = Modifier)
 }
 
 @Composable
-fun RoomCard(room: Room, isRoomAvailable: Boolean? = null)
+fun RoomCard(sourceActivity: Activity, room: Room, isRoomAvailable: Boolean? = null)
 {
     // Allow overriding the availability value using a parameter
     // so that the Composable preview can manually set the availability
@@ -180,7 +183,12 @@ fun RoomCard(room: Room, isRoomAvailable: Boolean? = null)
             .fillMaxWidth()
             .padding(horizontal = 16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
-        onClick = {/* TODO: Navigate to room details */ }
+        onClick = {
+            val intent = Intent(sourceActivity, RoomDetailActivity::class.java)
+            intent.putExtra("menuIndex", 3)
+            intent.putExtra("roomId", room.id)
+            sourceActivity.startActivity(intent)
+        }
     )
     {
         Row(verticalAlignment = Alignment.CenterVertically, modifier = Modifier.padding(start = 8.dp, end = 16.dp))
@@ -318,7 +326,7 @@ fun RoomCardAvailablePreview()
     {
         Column()
         {
-            RoomCard(Room("N16A", "Large classroom", 0), true)
+            RoomCard(Activity(), Room("N16A", "Large classroom", 0), true)
         }
     }
 }
@@ -331,7 +339,7 @@ fun RoomCardUnavailablePreview()
     {
         Column()
         {
-            RoomCard(Room("N16A", "Large classroom", 0), false)
+            RoomCard(Activity(), Room("N16A", "Large classroom", 0), false)
         }
     }
 }
@@ -352,7 +360,7 @@ fun RoomListPreview()
 
     ObooTheme()
     {
-        RoomList(rooms)
+        RoomList(Activity(), rooms)
     }
 }
 

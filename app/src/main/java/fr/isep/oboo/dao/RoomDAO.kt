@@ -19,6 +19,9 @@ interface RoomDAO
     @Query("DELETE FROM Room")
     suspend fun deleteAllRooms()
 
+    @Query("SELECT * FROM Room WHERE id = :id")
+    fun getRoomById(id: Long): Room
+
     @Query("SELECT * FROM Room ORDER BY number ASC")
     fun getAllRooms(): Flow<List<Room>>
 }

@@ -18,4 +18,6 @@
     <string name="navMenu_Rooms">Salles</string>
     <string name="navMenu_Profile">Profil</string>
     <string name="screenTitle_Dashboard">Tableau de bord</string>
+    <string name="tabInformation">Informations</string>
+    <string name="tabTimetable">Emploi du temps</string>
 </resources>

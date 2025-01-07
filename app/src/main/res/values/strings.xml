@@ -17,4 +17,6 @@
     <string name="navMenu_Rooms">Rooms</string>
     <string name="navMenu_Profile">Profile</string>
     <string name="screenTitle_Dashboard">Dashboard</string>
+    <string name="tabInformation">Information</string>
+    <string name="tabTimetable">Timetable</string>
 </resources>
