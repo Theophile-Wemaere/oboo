@@ -1,7 +1,6 @@
 package fr.isep.oboo.ui.components
 
 import android.app.Activity
-import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -169,9 +168,11 @@ fun RoomCard(room: Room, isRoomAvailable: Boolean? = null)
 {
     // Allow overriding the availability value using a parameter
     // so that the Composable preview can manually set the availability
-    var roomAvailable = room.isAvailable()
+    val roomAvailable: Boolean
     if (isRoomAvailable != null)
         roomAvailable = isRoomAvailable
+    else
+        roomAvailable = room.isAvailable()
 
     ElevatedCard(
         elevation = CardDefaults.cardElevation(6.dp),
@@ -317,7 +318,7 @@ fun RoomCardAvailablePreview()
     {
         Column()
         {
-            RoomCard(Room("N16A", "Large Classroom", 0), true)
+            RoomCard(Room("N16A", "Large classroom", 0), true)
         }
     }
 }
@@ -330,7 +331,7 @@ fun RoomCardUnavailablePreview()
     {
         Column()
         {
-            RoomCard(Room("N16A", "Large Classroom", 0), false)
+            RoomCard(Room("N16A", "Large classroom", 0), false)
         }
     }
 }
@@ -341,7 +342,7 @@ fun RoomListPreview()
 {
     val rooms: Flow<List<Room>> = flowOf(
         listOf(
-            Room("N16A", "Large Classroom", 0),
+            Room("N16A", "Large classroom", 0),
             Room("L012", "Amphitheater", 0),
             Room("L213", "Lab room", 0),
             Room("L306", "Classroom", 0),
@@ -361,7 +362,7 @@ fun RoomScreenPreview()
 {
     val rooms: Flow<List<Room>> = flowOf(
         listOf(
-            Room("N16A", "Large Classroom", 0),
+            Room("N16A", "Large classroom", 0),
             Room("L012", "Amphitheater", 0),
             Room("L213", "Lab room", 0),
             Room("L306", "Classroom", 0),
@@ -370,7 +371,7 @@ fun RoomScreenPreview()
     )
 
     ObooTheme {
-//        RoomsScreen(rooms)
+        RoomsScreen(Activity(), 3, rooms)
     }
 }
 
