@@ -20,6 +20,12 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    // Enables support for per-app language selection (Android 13+)
+    // See: https://developer.android.com/guide/topics/resources/app-languages#auto-localeconfig
+    androidResources {
+        generateLocaleConfig = true
+    }
+
     buildTypes {
         release {
             isMinifyEnabled = false

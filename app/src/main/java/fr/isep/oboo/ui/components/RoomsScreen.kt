@@ -50,6 +50,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
@@ -79,7 +80,7 @@ fun RoomsScreen(rooms: Flow<List<Room>>)
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { TopAppBar("Rooms", scrollBehavior) },
+        topBar = { TopAppBar(stringResource(R.string.screenTitle_Rooms), scrollBehavior) },
         bottomBar = { BottomNavigationBar() }
     )
     {
@@ -213,7 +214,7 @@ fun RoomCard(room: Room, isRoomAvailable: Boolean? = null)
                     AvailabilityBadge(roomAvailable)
                 }
                 Text(
-                    text = room.name,
+                    text = room.getLocalizedName(),
                     color = MaterialTheme.colorScheme.onSurfaceVariant,
                     fontSize = 14.sp,
                     fontWeight = FontWeight(400),
@@ -232,7 +233,7 @@ fun RoomCard(room: Room, isRoomAvailable: Boolean? = null)
 fun AvailabilityBadge(available: Boolean)
 {
     Text(
-        text = if (available) "Available" else "Unavailable",
+        text = if (available) stringResource(R.string.statusBadge_Available) else stringResource(R.string.statusBadge_Unavailable),
         color = if (available) MaterialTheme.colorScheme.onSecondary else MaterialTheme.colorScheme.onError,
         fontSize = 12.sp,
         modifier = Modifier
@@ -267,9 +268,9 @@ fun <T> PullToRefreshLazyColumnWithRoomFilterChips(
                     .fillMaxWidth()
                     .padding(vertical = 8.dp))
                 {
-                    RoomFilterChip("Available", showAvailableRooms)
+                    RoomFilterChip(stringResource(R.string.filterChip_Available), showAvailableRooms)
                     Spacer(Modifier.size(32.dp))
-                    RoomFilterChip("Unavailable", showUnavailableRooms, MaterialTheme.colorScheme.error)
+                    RoomFilterChip(stringResource(R.string.filterChip_Unavailable), showUnavailableRooms, MaterialTheme.colorScheme.error)
                 }
             }
 

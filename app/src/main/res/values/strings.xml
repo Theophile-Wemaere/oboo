@@ -1,3 +1,19 @@
 <resources>
     <string name="app_name">Oboo</string>
+    <string name="screenTitle_Rooms">Rooms</string>
+    <string name="filterChip_Available">Available</string>
+    <string name="filterChip_Unavailable">Unavailable</string>
+    <string name="statusBadge_Available">Available</string>
+    <string name="statusBadge_Unavailable">Unavailable</string>
+    <string name="roomName_Amphitheater">Amphitheater</string>
+    <string name="roomName_Cloister">Cloister</string>
+    <string name="roomName_Classroom">Classroom</string>
+    <string name="roomName_LargeClassroom">Large classroom</string>
+    <string name="roomName_LabRoom">Lab room</string>
+    <string name="roomName_Auditorium">Auditorium</string>
+    <string name="navMenu_Dashboard">Dashboard</string>
+    <string name="navMenu_Buildings">Buildings</string>
+    <string name="navMenu_Floors">Floors</string>
+    <string name="navMenu_Rooms">Rooms</string>
+    <string name="navMenu_Profile">Profile</string>
 </resources>

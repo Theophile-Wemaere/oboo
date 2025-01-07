@@ -39,6 +39,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.stringResource
+import fr.isep.oboo.R
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -68,11 +70,11 @@ data class BottomNavigationItem(
 fun BottomNavigationBar()
 {
     val navigationItems = listOf(
-        BottomNavigationItem("Dashboard", Icons.Filled.Home, Icons.Outlined.Home),
-        BottomNavigationItem("Buildings", Icons.Filled.Apartment, Icons.Outlined.Apartment),
-        BottomNavigationItem("Floors", Icons.Filled.Stairs, Icons.Outlined.Stairs),
-        BottomNavigationItem("Rooms", Icons.Filled.DoorFront, Icons.Outlined.DoorFront),
-        BottomNavigationItem("Profile", Icons.Filled.AccountCircle, Icons.Outlined.AccountCircle),
+        BottomNavigationItem(stringResource(R.string.navMenu_Dashboard), Icons.Filled.Home, Icons.Outlined.Home),
+        BottomNavigationItem(stringResource(R.string.navMenu_Buildings), Icons.Filled.Apartment, Icons.Outlined.Apartment),
+        BottomNavigationItem(stringResource(R.string.navMenu_Floors), Icons.Filled.Stairs, Icons.Outlined.Stairs),
+        BottomNavigationItem(stringResource(R.string.navMenu_Rooms), Icons.Filled.DoorFront, Icons.Outlined.DoorFront),
+        BottomNavigationItem(stringResource(R.string.navMenu_Profile), Icons.Filled.AccountCircle, Icons.Outlined.AccountCircle),
     )
     var selectedItemIndex by rememberSaveable {
         mutableIntStateOf(0)
