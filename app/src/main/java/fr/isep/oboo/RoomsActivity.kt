@@ -24,8 +24,6 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
-import java.time.LocalDateTime
-import kotlin.math.floor
 
 private lateinit var db: ObooDatabase
 private lateinit var buildingDAO: BuildingDAO
@@ -33,11 +31,22 @@ private lateinit var floorDAO: FloorDAO
 private lateinit var roomDAO: RoomDAO
 private lateinit var timeSlotDAO: TimeSlotDAO
 
-class MainActivity : ComponentActivity()
+class RoomsActivity: ComponentActivity()
 {
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?)
+    {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
+
+        // Retrieve menu index
+        val extras = intent.extras
+        var menuIndex: Int = 0
+        if (extras != null) {
+            menuIndex = extras.getInt("menuIndex")
+        }
+        else {
+            Log.e("Rooms Activity", "Menu index not provided in the Intent, defaulting to 0.")
+        }
 
         // Database instantiation
         db = ObooDatabase.getInstance(applicationContext)
@@ -52,7 +61,7 @@ class MainActivity : ComponentActivity()
 
         setContent {
             ObooTheme {
-                RoomsScreen(roomDAO.getAllRooms())
+                RoomsScreen(this, menuIndex, rooms = roomDAO.getAllRooms(), onReturn = { this.onBackPressed() })
             }
         }
     }
@@ -146,27 +155,6 @@ suspend fun refreshDatabase()
     }
     else
     {
-        Log.d("Oboo API", "API calls failed")
+        Log.e("Oboo API", "API calls failed")
     }
-
-//    if (response.isSuccessful && response.body() != null)
-//    {
-//        Log.d("Oboo API", "API call to /rooms: OK")
-//        Log.d("Oboo API", response.body().toString())
-//
-//        // Override the database data with data fetched from the API
-//        timeSlotDAO.deleteAllTimeSlots()
-//        roomDAO.deleteAllRooms()
-//        floorDAO.deleteAllFloors()
-//        buildingDAO.deleteAllBuildings()
-//
-//        for (roomDTO: RoomDTO in response.body()!!)
-//            roomDAO.insertRoom(Room(roomDTO.number, roomDTO.name))
-//
-//    }
-//    else
-//    {
-//        Log.d("Oboo API", "Response not successful: ${response.isSuccessful} (code: ${response.code()})")
-//        Log.d("Oboo API", "Response body: ${response.body().toString()}")
-//    }
 }

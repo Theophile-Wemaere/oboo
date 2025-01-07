@@ -1,5 +1,7 @@
 package fr.isep.oboo.ui.components
 
+import android.app.Activity
+import android.content.Intent
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.lazy.LazyColumn
@@ -31,62 +33,66 @@ import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import fr.isep.oboo.DashboardActivity
 import fr.isep.oboo.R
+import fr.isep.oboo.RoomsActivity
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun TopAppBar(title: String, scrollBehavior: TopAppBarScrollBehavior)
+fun TopAppBar(title: String, scrollBehavior: TopAppBarScrollBehavior, returnButton: Boolean = true, onReturn: () -> Unit? = {})
 {
-    CenterAlignedTopAppBar(
-        title = { Text(title) },
-        navigationIcon = {
-            IconButton(onClick = {
-                /* TODO: Return button for TopAppBar*/
-            }) {
-                Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Go back")
-            }
-        },
-        scrollBehavior = scrollBehavior
-    )
+    if (returnButton)
+    {
+        CenterAlignedTopAppBar(
+            title = { Text(title) },
+            navigationIcon = {
+                IconButton(onClick = {
+                    /* TODO: Return button for TopAppBar*/
+                    onReturn()
+                }) {
+                    Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Go back")
+                }
+            },
+            scrollBehavior = scrollBehavior
+        )
+    }
+    else
+        CenterAlignedTopAppBar(title = { Text(title) }, scrollBehavior = scrollBehavior)
 }
 
 data class BottomNavigationItem(
     val title: String,
     val selectedIcon: ImageVector,
-    val unselectedIcon: ImageVector
+    val unselectedIcon: ImageVector,
+    val destinationActivity: Class<*>
 )
 
 @Composable
-fun BottomNavigationBar()
+fun BottomNavigationBar(sourceActivity: Activity, selectedItemIndex: Int)
 {
     val navigationItems = listOf(
-        BottomNavigationItem(stringResource(R.string.navMenu_Dashboard), Icons.Filled.Home, Icons.Outlined.Home),
-        BottomNavigationItem(stringResource(R.string.navMenu_Buildings), Icons.Filled.Apartment, Icons.Outlined.Apartment),
-        BottomNavigationItem(stringResource(R.string.navMenu_Floors), Icons.Filled.Stairs, Icons.Outlined.Stairs),
-        BottomNavigationItem(stringResource(R.string.navMenu_Rooms), Icons.Filled.DoorFront, Icons.Outlined.DoorFront),
-        BottomNavigationItem(stringResource(R.string.navMenu_Profile), Icons.Filled.AccountCircle, Icons.Outlined.AccountCircle),
+        BottomNavigationItem(stringResource(R.string.navMenu_Dashboard), Icons.Filled.Home, Icons.Outlined.Home, DashboardActivity::class.java),
+        BottomNavigationItem(stringResource(R.string.navMenu_Buildings), Icons.Filled.Apartment, Icons.Outlined.Apartment, DashboardActivity::class.java),
+        BottomNavigationItem(stringResource(R.string.navMenu_Floors), Icons.Filled.Stairs, Icons.Outlined.Stairs, DashboardActivity::class.java),
+        BottomNavigationItem(stringResource(R.string.navMenu_Rooms), Icons.Filled.DoorFront, Icons.Outlined.DoorFront, RoomsActivity::class.java),
+        BottomNavigationItem(stringResource(R.string.navMenu_Profile), Icons.Filled.AccountCircle, Icons.Outlined.AccountCircle, DashboardActivity::class.java),
     )
-    var selectedItemIndex by rememberSaveable {
-        mutableIntStateOf(0)
-    }
 
     NavigationBar {
         navigationItems.forEachIndexed { index, bottomNavigationItem ->
             NavigationBarItem(
                 selected = (selectedItemIndex == index),
                 onClick = {
-                    selectedItemIndex = index
-                    // TODO: Navigate to screen
+                    // selectedItemIndex = index
+                    val intent = Intent(sourceActivity, bottomNavigationItem.destinationActivity)
+                    intent.putExtra("menuIndex", index)
+                    sourceActivity.startActivity(intent)
                 },
                 label = {
                     Text(bottomNavigationItem.title)

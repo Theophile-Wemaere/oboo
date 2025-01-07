@@ -16,4 +16,5 @@
     <string name="navMenu_Floors">Floors</string>
     <string name="navMenu_Rooms">Rooms</string>
     <string name="navMenu_Profile">Profile</string>
+    <string name="screenTitle_Dashboard">Dashboard</string>
 </resources>

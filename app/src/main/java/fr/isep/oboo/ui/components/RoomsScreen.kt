@@ -1,5 +1,7 @@
 package fr.isep.oboo.ui.components
 
+import android.app.Activity
+import android.content.Context
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -69,7 +71,7 @@ import java.io.IOException
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun RoomsScreen(rooms: Flow<List<Room>>)
+fun RoomsScreen(sourceActivity: Activity, menuIndex: Int, rooms: Flow<List<Room>>, onReturn: () -> Unit? = {})
 {
     // pinnedScrollBehavior makes the top bar always visible but it changes color when scrolling
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior()
@@ -80,8 +82,8 @@ fun RoomsScreen(rooms: Flow<List<Room>>)
             .fillMaxSize()
             .background(MaterialTheme.colorScheme.background)
             .nestedScroll(scrollBehavior.nestedScrollConnection),
-        topBar = { TopAppBar(stringResource(R.string.screenTitle_Rooms), scrollBehavior) },
-        bottomBar = { BottomNavigationBar() }
+        topBar = { TopAppBar(stringResource(R.string.screenTitle_Rooms), scrollBehavior, onReturn = onReturn)},
+        bottomBar = { BottomNavigationBar(sourceActivity, menuIndex) }
     )
     {
         // Passing the modifier to the RoomList composable allows the LazyColumn to be shifted downwards
@@ -368,7 +370,7 @@ fun RoomScreenPreview()
     )
 
     ObooTheme {
-        RoomsScreen(rooms)
+//        RoomsScreen(rooms)
     }
 }
 

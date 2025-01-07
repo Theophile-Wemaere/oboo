@@ -17,4 +17,5 @@
     <string name="navMenu_Floors">Étages</string>
     <string name="navMenu_Rooms">Salles</string>
     <string name="navMenu_Profile">Profil</string>
+    <string name="screenTitle_Dashboard">Tableau de bord</string>
 </resources>
