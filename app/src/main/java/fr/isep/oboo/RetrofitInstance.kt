@@ -7,7 +7,7 @@ object RetrofitInstance
 {
     val api: ObooAPI by lazy {
         Retrofit.Builder()
-            // .baseUrl("http://10.0.2.2:8888/api/")
+            //.baseUrl("http://10.0.2.2:8888/api/")
             .baseUrl("https://api.middle-earth.ovh/api/")
             .addConverterFactory(GsonConverterFactory.create())
             .build()

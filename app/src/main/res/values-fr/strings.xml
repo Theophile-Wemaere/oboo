@@ -23,4 +23,7 @@
     <string name="floorName_GroundFloor">Rez-de-chaussée</string>
     <string name="floorName_Floor">Étage</string>
     <string name="screenTitle_Floors">Étages</string>
+    <string name="screenTitle_Buildings">Bâtiments</string>
+    <string name="buildingCityName_Paris14">Paris, 14e arrondissement</string>
+    <string name="buildingCityName_IssyLesMoulineaux">Issy-les-Moulineaux</string>
 </resources>

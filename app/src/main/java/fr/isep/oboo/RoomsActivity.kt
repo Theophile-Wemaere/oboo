@@ -113,7 +113,7 @@ suspend fun refreshDatabase()
 
         for (buildingDTO: BuildingDTO in buildingsResponse.body()!!)
         {
-            val buildingId = db.buildingDAO().insertBuilding(Building(buildingDTO.name))
+            val buildingId = db.buildingDAO().insertBuilding(Building(buildingDTO.name, buildingDTO.long_name, buildingDTO.city))
 
             for (floorDTO: FloorDTO in floorsResponse.body()!!)
             {

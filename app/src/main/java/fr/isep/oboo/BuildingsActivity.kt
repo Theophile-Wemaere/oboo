@@ -6,11 +6,11 @@ import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.lifecycle.lifecycleScope
-import fr.isep.oboo.ui.components.FloorsScreen
+import fr.isep.oboo.ui.components.BuildingsScreen
 import fr.isep.oboo.ui.theme.ObooTheme
 import kotlinx.coroutines.launch
 
-class FloorsActivity: ComponentActivity()
+class BuildingsActivity: ComponentActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -24,7 +24,7 @@ class FloorsActivity: ComponentActivity()
             menuIndex = extras.getInt("menuIndex")
         }
         else {
-            Log.e("Floors Activity", "Menu index not provided in the Intent, defaulting to 0.")
+            Log.e("Buildings Activity", "Menu index not provided in the Intent, defaulting to 0.")
         }
 
         lifecycleScope.launch {
@@ -33,7 +33,7 @@ class FloorsActivity: ComponentActivity()
 
         setContent {
             ObooTheme {
-                FloorsScreen(this, menuIndex, ObooDatabase.getInstance(applicationContext).floorDAO().getAllFloors(), { this.onBackPressed() })
+                BuildingsScreen(this, menuIndex, ObooDatabase.getInstance(applicationContext).buildingDAO().getAllBuildings(), { this.onBackPressed() })
             }
         }
     }

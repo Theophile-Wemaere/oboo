@@ -22,4 +22,7 @@
     <string name="floorName_GroundFloor">Ground floor</string>
     <string name="floorName_Floor">Floor</string>
     <string name="screenTitle_Floors">Floors</string>
+    <string name="screenTitle_Buildings">Buildings</string>
+    <string name="buildingCityName_Paris14">Paris, 14th district</string>
+    <string name="buildingCityName_IssyLesMoulineaux">Issy-les-Moulineaux</string>
 </resources>

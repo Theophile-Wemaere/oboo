@@ -40,6 +40,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import fr.isep.oboo.BuildingsActivity
 import fr.isep.oboo.DashboardActivity
 import fr.isep.oboo.FloorsActivity
 import fr.isep.oboo.R
@@ -81,7 +82,7 @@ fun BottomNavigationBar(sourceActivity: Activity, selectedItemIndex: Int)
 {
     val navigationItems = listOf(
         BottomNavigationItem(stringResource(R.string.navMenu_Dashboard), Icons.Filled.Home, Icons.Outlined.Home, DashboardActivity::class.java),
-        BottomNavigationItem(stringResource(R.string.navMenu_Buildings), Icons.Filled.Apartment, Icons.Outlined.Apartment, DashboardActivity::class.java),
+        BottomNavigationItem(stringResource(R.string.navMenu_Buildings), Icons.Filled.Apartment, Icons.Outlined.Apartment, BuildingsActivity::class.java),
         BottomNavigationItem(stringResource(R.string.navMenu_Floors), Icons.Filled.Stairs, Icons.Outlined.Stairs, FloorsActivity::class.java),
         BottomNavigationItem(stringResource(R.string.navMenu_Rooms), Icons.Filled.DoorFront, Icons.Outlined.DoorFront, RoomsActivity::class.java),
         BottomNavigationItem(stringResource(R.string.navMenu_Profile), Icons.Filled.AccountCircle, Icons.Outlined.AccountCircle, DashboardActivity::class.java),
