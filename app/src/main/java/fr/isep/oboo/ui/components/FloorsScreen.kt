@@ -156,7 +156,7 @@ fun FloorCard(sourceActivity: Activity, floor: Floor, preview: Boolean = false)
                 else
                 {
                     Text(
-                        text = "${stringResource(R.string.floorName_GroundFloor)} ${floor.number}",
+                        text = "${stringResource(R.string.floorName_Floor)} ${floor.number}",
                         color = MaterialTheme.colorScheme.onSurfaceVariant,
                         fontSize = 14.sp,
                         fontWeight = FontWeight(400),
