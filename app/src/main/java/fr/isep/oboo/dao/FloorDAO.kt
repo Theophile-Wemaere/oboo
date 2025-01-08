@@ -19,6 +19,6 @@ interface FloorDAO
     @Query("DELETE FROM Floor")
     suspend fun deleteAllFloors()
 
-    @Query("SELECT * FROM Floor ORDER BY name ASC")
+    @Query("SELECT * FROM Floor ORDER BY buildingId, number ASC")
     fun getAllFloors(): Flow<List<Floor>>
 }

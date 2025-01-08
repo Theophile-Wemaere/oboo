@@ -33,14 +33,18 @@ import androidx.compose.material3.pulltorefresh.PullToRefreshContainer
 import androidx.compose.material3.pulltorefresh.rememberPullToRefreshState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import fr.isep.oboo.DashboardActivity
+import fr.isep.oboo.FloorsActivity
 import fr.isep.oboo.R
 import fr.isep.oboo.RoomsActivity
+import kotlinx.coroutines.flow.Flow
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -53,7 +57,6 @@ fun TopAppBar(title: String, scrollBehavior: TopAppBarScrollBehavior, returnButt
             title = { Text(title) },
             navigationIcon = {
                 IconButton(onClick = {
-                    /* TODO: Return button for TopAppBar*/
                     onReturn()
                 }) {
                     Icon(imageVector = Icons.AutoMirrored.Filled.ArrowBack, contentDescription = "Go back")
@@ -79,7 +82,7 @@ fun BottomNavigationBar(sourceActivity: Activity, selectedItemIndex: Int)
     val navigationItems = listOf(
         BottomNavigationItem(stringResource(R.string.navMenu_Dashboard), Icons.Filled.Home, Icons.Outlined.Home, DashboardActivity::class.java),
         BottomNavigationItem(stringResource(R.string.navMenu_Buildings), Icons.Filled.Apartment, Icons.Outlined.Apartment, DashboardActivity::class.java),
-        BottomNavigationItem(stringResource(R.string.navMenu_Floors), Icons.Filled.Stairs, Icons.Outlined.Stairs, DashboardActivity::class.java),
+        BottomNavigationItem(stringResource(R.string.navMenu_Floors), Icons.Filled.Stairs, Icons.Outlined.Stairs, FloorsActivity::class.java),
         BottomNavigationItem(stringResource(R.string.navMenu_Rooms), Icons.Filled.DoorFront, Icons.Outlined.DoorFront, RoomsActivity::class.java),
         BottomNavigationItem(stringResource(R.string.navMenu_Profile), Icons.Filled.AccountCircle, Icons.Outlined.AccountCircle, DashboardActivity::class.java),
     )
@@ -111,7 +114,7 @@ fun BottomNavigationBar(sourceActivity: Activity, selectedItemIndex: Int)
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun <T> PullToRefreshLazyColumn(
-    items: List<T>,
+    itemsFlow: Flow<List<T>>,
     content: @Composable (T) -> Unit,
     isRefreshing: Boolean,
     onRefresh: () -> Unit,
@@ -120,6 +123,8 @@ fun <T> PullToRefreshLazyColumn(
 )
 {
     val pullToRefreshState = rememberPullToRefreshState()
+    val items by itemsFlow.collectAsState(initial = emptyList())
+
     Box(modifier = modifier.nestedScroll(pullToRefreshState.nestedScrollConnection))
     {
         LazyColumn(state = lazyListState, modifier = Modifier.fillMaxSize())

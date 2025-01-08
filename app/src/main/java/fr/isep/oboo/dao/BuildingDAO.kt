@@ -5,6 +5,7 @@ import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
 import fr.isep.oboo.model.Building
+import fr.isep.oboo.model.Floor
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -18,6 +19,9 @@ interface BuildingDAO
 
     @Query("DELETE FROM Building")
     suspend fun deleteAllBuildings()
+
+    @Query("SELECT * FROM Building WHERE id = :id")
+    fun getBuildingById(id: Long): Building
 
     @Query("SELECT * FROM Building ORDER BY name ASC")
     fun getAllBuildings(): Flow<List<Building>>

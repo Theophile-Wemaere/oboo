@@ -90,7 +90,7 @@ fun RoomsScreen(sourceActivity: Activity, menuIndex: Int, rooms: Flow<List<Room>
     {
         // Passing the modifier to the RoomList composable allows the LazyColumn to be shifted downwards
         // with a padding that is the size of the top app bar itself (so that there's no overlap)
-            contentPadding -> RoomList(sourceActivity, rooms, modifier = Modifier.padding(contentPadding))
+        contentPadding -> RoomList(sourceActivity, rooms, modifier = Modifier.padding(contentPadding))
     }
 }
 

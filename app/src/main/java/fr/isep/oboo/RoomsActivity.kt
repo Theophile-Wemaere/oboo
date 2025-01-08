@@ -25,12 +25,6 @@ import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
 
-private lateinit var db: ObooDatabase
-private lateinit var buildingDAO: BuildingDAO
-private lateinit var floorDAO: FloorDAO
-private lateinit var roomDAO: RoomDAO
-private lateinit var timeSlotDAO: TimeSlotDAO
-
 class RoomsActivity: ComponentActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?)
@@ -48,20 +42,13 @@ class RoomsActivity: ComponentActivity()
             Log.e("Rooms Activity", "Menu index not provided in the Intent, defaulting to 0.")
         }
 
-        // Database instantiation
-        db = ObooDatabase.getInstance(applicationContext)
-        buildingDAO = db.buildingDAO()
-        floorDAO = db.floorDAO()
-        roomDAO = db.roomDAO()
-        timeSlotDAO = db.timeSlotDAO()
-
         lifecycleScope.launch {
             refreshDatabase()
         }
 
         setContent {
             ObooTheme {
-                RoomsScreen(this, menuIndex, rooms = roomDAO.getAllRooms(), onReturn = { this.onBackPressed() })
+                RoomsScreen(this, menuIndex, rooms = ObooDatabase.getInstance(applicationContext).roomDAO().getAllRooms(), onReturn = { this.onBackPressed() })
             }
         }
     }
@@ -118,20 +105,21 @@ suspend fun refreshDatabase()
     )
     {
         Log.d("Oboo API", "API calls successful, rebuilding local database...")
-        timeSlotDAO.deleteAllTimeSlots()
-        roomDAO.deleteAllRooms()
-        floorDAO.deleteAllFloors()
-        buildingDAO.deleteAllBuildings()
+        val db = ObooDatabase.getInstance(ObooApp.applicationContext())
+        db.timeSlotDAO().deleteAllTimeSlots()
+        db.roomDAO().deleteAllRooms()
+        db.floorDAO().deleteAllFloors()
+        db.buildingDAO().deleteAllBuildings()
 
         for (buildingDTO: BuildingDTO in buildingsResponse.body()!!)
         {
-            val buildingId = buildingDAO.insertBuilding(Building(buildingDTO.name))
+            val buildingId = db.buildingDAO().insertBuilding(Building(buildingDTO.name))
 
             for (floorDTO: FloorDTO in floorsResponse.body()!!)
             {
                 var floorId: Long = 0;
                 if (floorDTO.building == buildingDTO.id)
-                    floorId = floorDAO.insertFloor(Floor(floorDTO.number, floorDTO.name, buildingId))
+                    floorId = db.floorDAO().insertFloor(Floor(floorDTO.number, floorDTO.name, buildingId))
                 else
                     continue
 
@@ -139,14 +127,14 @@ suspend fun refreshDatabase()
                 {
                     var roomId: Long = 0;
                     if (roomDTO.floor == floorDTO.id)
-                        roomId = roomDAO.insertRoom(Room(roomDTO.number, roomDTO.name, floorId))
+                        roomId = db.roomDAO().insertRoom(Room(roomDTO.number, roomDTO.name, floorId))
                     else
                         continue
 
                     for (timeSlotDTO: TimeSlotDTO in timeSlotsResponse.body()!!)
                     {
                         if (timeSlotDTO.room == roomDTO.id)
-                            timeSlotDAO.insertTimeSlot(TimeSlot(timeSlotDTO.subject, timeSlotDTO.start_time, timeSlotDTO.end_time, roomId))
+                            db.timeSlotDAO().insertTimeSlot(TimeSlot(timeSlotDTO.subject, timeSlotDTO.start_time, timeSlotDTO.end_time, roomId))
                     }
                 }
             }

@@ -37,7 +37,7 @@ fun DashboardScreen(sourceActivity: Activity, menuIndex: Int, onReturn: () -> Un
     {
         // Passing the modifier to the content composable allows it to be shifted downwards
         // with a padding that is the size of the top app bar itself (so that there's no overlap)
-            contentPadding -> Text("Dashboard screen placeholder", modifier = Modifier.padding(contentPadding))
+        contentPadding -> Text("Dashboard screen placeholder", modifier = Modifier.padding(contentPadding))
     }
 }
 

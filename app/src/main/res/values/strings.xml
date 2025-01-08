@@ -19,4 +19,7 @@
     <string name="screenTitle_Dashboard">Dashboard</string>
     <string name="tabInformation">Information</string>
     <string name="tabTimetable">Timetable</string>
+    <string name="floorName_GroundFloor">Ground floor</string>
+    <string name="floorName_Floor">Floor</string>
+    <string name="screenTitle_Floors">Floors</string>
 </resources>
