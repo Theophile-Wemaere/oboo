@@ -5,10 +5,8 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.lifecycle.lifecycleScope
 import fr.isep.oboo.ui.components.BuildingsScreen
 import fr.isep.oboo.ui.theme.ObooTheme
-import kotlinx.coroutines.launch
 
 class BuildingsActivity: ComponentActivity()
 {
@@ -25,10 +23,6 @@ class BuildingsActivity: ComponentActivity()
         }
         else {
             Log.e("Buildings Activity", "Menu index not provided in the Intent, defaulting to 0.")
-        }
-
-        lifecycleScope.launch {
-            refreshDatabase()
         }
 
         setContent {

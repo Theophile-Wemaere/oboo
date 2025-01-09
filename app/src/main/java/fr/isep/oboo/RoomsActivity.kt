@@ -42,10 +42,6 @@ class RoomsActivity: ComponentActivity()
             Log.e("Rooms Activity", "Menu index not provided in the Intent, defaulting to 0.")
         }
 
-        lifecycleScope.launch {
-            refreshDatabase()
-        }
-
         setContent {
             ObooTheme {
                 RoomsScreen(this, menuIndex, rooms = ObooDatabase.getInstance(applicationContext).roomDAO().getAllRooms(), onReturn = { this.onBackPressed() })

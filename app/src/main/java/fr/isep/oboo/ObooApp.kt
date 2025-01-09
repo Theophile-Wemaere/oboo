@@ -2,6 +2,8 @@ package fr.isep.oboo
 
 import android.app.Application
 import android.content.Context
+import kotlinx.coroutines.MainScope
+import kotlinx.coroutines.launch
 
 class ObooApp: Application()
 {
@@ -20,5 +22,10 @@ class ObooApp: Application()
     override fun onCreate() {
         super.onCreate()
         val context: Context = ObooApp.applicationContext()
+
+        // Rebuild the local database on app startup by querying the API
+        MainScope().launch {
+            refreshDatabase()
+        }
     }
 }
