@@ -26,4 +26,7 @@
     <string name="screenTitle_Buildings">Bâtiments</string>
     <string name="buildingCityName_Paris14">Paris, 14e arrondissement</string>
     <string name="buildingCityName_IssyLesMoulineaux">Issy-les-Moulineaux</string>
+    <string name="infoCard_AvailableRooms">Salles libres</string>
+    <string name="infoCard_UnavailableRooms">Salles occupées</string>
+    <string name="infoCard_RoomAvailability">Disponibilité des salles</string>
 </resources>

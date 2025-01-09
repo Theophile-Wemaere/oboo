@@ -4,6 +4,7 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.room.RoomDatabase
 import fr.isep.oboo.dao.BuildingDAO
 import fr.isep.oboo.dao.FloorDAO
 import fr.isep.oboo.dao.RoomDAO
@@ -33,7 +34,7 @@ class DashboardActivity : ComponentActivity()
 
         setContent {
             ObooTheme {
-                DashboardScreen(this, menuIndex)
+                DashboardScreen(this, menuIndex, ObooDatabase.getInstance(applicationContext).roomDAO().getAllRooms())
             }
         }
     }

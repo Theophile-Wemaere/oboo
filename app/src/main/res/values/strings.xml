@@ -25,4 +25,7 @@
     <string name="screenTitle_Buildings">Buildings</string>
     <string name="buildingCityName_Paris14">Paris, 14th district</string>
     <string name="buildingCityName_IssyLesMoulineaux">Issy-les-Moulineaux</string>
+    <string name="infoCard_AvailableRooms">Available rooms</string>
+    <string name="infoCard_UnavailableRooms">Occupied rooms</string>
+    <string name="infoCard_RoomAvailability">Room availability</string>
 </resources>
