@@ -127,7 +127,7 @@ fun BuildingCard(sourceActivity: Activity, building: Building)
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
         onClick = {
             val intent = Intent(sourceActivity, BuildingDetailActivity::class.java)
-            intent.putExtra("menuIndex", 2)
+            intent.putExtra("menuIndex", 1)
             intent.putExtra("buildingId", building.id)
             sourceActivity.startActivity(intent)
         }
