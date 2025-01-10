@@ -29,4 +29,6 @@
     <string name="infoCard_AvailableRooms">Salles libres</string>
     <string name="infoCard_UnavailableRooms">Salles occupées</string>
     <string name="infoCard_RoomAvailability">Disponibilité des salles</string>
+    <string name="tabFloors">Étages</string>
+    <string name="tabRooms">Salles</string>
 </resources>

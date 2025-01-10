@@ -6,6 +6,7 @@ import androidx.room.Insert
 import androidx.room.Query
 import fr.isep.oboo.model.Building
 import fr.isep.oboo.model.Floor
+import fr.isep.oboo.model.Room
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -25,4 +26,10 @@ interface BuildingDAO
 
     @Query("SELECT * FROM Building ORDER BY name ASC")
     fun getAllBuildings(): Flow<List<Building>>
+
+    @Query("SELECT * FROM Floor WHERE buildingId = :buildingId ORDER BY number ASC")
+    fun getAllFloors(buildingId: Long): Flow<List<Floor>>
+
+    @Query("SELECT * FROM Room WHERE floorId IN (SELECT id FROM Floor WHERE buildingId = :buildingId) ORDER BY number ASC")
+    fun getAllRooms(buildingId: Long): Flow<List<Room>>
 }

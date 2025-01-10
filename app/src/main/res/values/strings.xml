@@ -28,4 +28,6 @@
     <string name="infoCard_AvailableRooms">Available rooms</string>
     <string name="infoCard_UnavailableRooms">Occupied rooms</string>
     <string name="infoCard_RoomAvailability">Room availability</string>
+    <string name="tabFloors">Floors</string>
+    <string name="tabRooms">Rooms</string>
 </resources>

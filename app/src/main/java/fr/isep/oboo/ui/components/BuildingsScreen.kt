@@ -1,6 +1,7 @@
 package fr.isep.oboo.ui.components
 
 import android.app.Activity
+import android.content.Intent
 import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -38,6 +39,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.isep.oboo.BuildingDetailActivity
 import fr.isep.oboo.R
 import fr.isep.oboo.model.Building
 import fr.isep.oboo.refreshDatabase
@@ -124,10 +126,10 @@ fun BuildingCard(sourceActivity: Activity, building: Building)
             .padding(horizontal = 16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
         onClick = {
-//            val intent = Intent(sourceActivity, BuildingDetailActivity::class.java)
-//            intent.putExtra("menuIndex", 2)
-//            intent.putExtra("buildingId", building.id)
-//            sourceActivity.startActivity(intent)
+            val intent = Intent(sourceActivity, BuildingDetailActivity::class.java)
+            intent.putExtra("menuIndex", 2)
+            intent.putExtra("buildingId", building.id)
+            sourceActivity.startActivity(intent)
         }
     )
     {

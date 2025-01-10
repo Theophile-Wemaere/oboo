@@ -47,6 +47,11 @@
             android:exported="true"
             android:theme="@style/Theme.Oboo">
         </activity>
+        <activity
+            android:name=".BuildingDetailActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Oboo">
+        </activity>
     </application>
 
 </manifest>
