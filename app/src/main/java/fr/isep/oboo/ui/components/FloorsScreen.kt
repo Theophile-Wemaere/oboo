@@ -1,6 +1,7 @@
 package fr.isep.oboo.ui.components
 
 import android.app.Activity
+import android.content.Intent
 import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
@@ -34,6 +35,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import fr.isep.oboo.FloorDetailActivity
 import fr.isep.oboo.R
 import fr.isep.oboo.model.Floor
 import fr.isep.oboo.refreshDatabase
@@ -119,10 +121,10 @@ fun FloorCard(sourceActivity: Activity, floor: Floor, preview: Boolean = false)
             .padding(horizontal = 16.dp),
         colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer),
         onClick = {
-//            val intent = Intent(sourceActivity, FloorDetailActivity::class.java)
-//            intent.putExtra("menuIndex", 2)
-//            intent.putExtra("floorId", floor.id)
-//            sourceActivity.startActivity(intent)
+            val intent = Intent(sourceActivity, FloorDetailActivity::class.java)
+            intent.putExtra("menuIndex", 2)
+            intent.putExtra("floorId", floor.id)
+            sourceActivity.startActivity(intent)
         }
     )
     {

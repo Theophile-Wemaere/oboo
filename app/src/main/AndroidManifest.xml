@@ -52,6 +52,11 @@
             android:exported="true"
             android:theme="@style/Theme.Oboo">
         </activity>
+        <activity
+            android:name=".FloorDetailActivity"
+            android:exported="true"
+            android:theme="@style/Theme.Oboo">
+        </activity>
     </application>
 
 </manifest>
