@@ -9,7 +9,6 @@ import fr.isep.oboo.model.Building
 import fr.isep.oboo.model.Floor
 import fr.isep.oboo.model.Room
 import fr.isep.oboo.ui.components.BuildingDetailScreen
-import fr.isep.oboo.ui.components.RoomDetailScreen
 import fr.isep.oboo.ui.theme.ObooTheme
 import kotlinx.coroutines.flow.Flow
 
