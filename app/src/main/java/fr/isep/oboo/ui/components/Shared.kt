@@ -2,8 +2,12 @@ package fr.isep.oboo.ui.components
 
 import android.app.Activity
 import android.content.Intent
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
@@ -20,7 +24,9 @@ import androidx.compose.material.icons.outlined.Apartment
 import androidx.compose.material.icons.outlined.DoorFront
 import androidx.compose.material.icons.outlined.Home
 import androidx.compose.material.icons.outlined.Stairs
+import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.CenterAlignedTopAppBar
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -40,6 +46,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import fr.isep.oboo.BuildingsActivity
 import fr.isep.oboo.DashboardActivity
 import fr.isep.oboo.FloorsActivity
@@ -156,5 +165,59 @@ fun <T> PullToRefreshLazyColumn(
             modifier = Modifier.align(Alignment.TopCenter),
             contentColor = MaterialTheme.colorScheme.primary
         )
+    }
+}
+
+@Composable
+fun InfoCard(title: String, value: String, modifier: Modifier = Modifier)
+{
+    ElevatedCard(
+        elevation = CardDefaults.cardElevation(6.dp),
+        modifier = Modifier.padding(horizontal = 20.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
+    )
+    {
+        Column(modifier = modifier)
+        {
+            Text(
+                text = title,
+                fontSize = 16.sp,
+                fontWeight = FontWeight(500),
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 16.dp)
+            )
+            Text(
+                text = value,
+                fontSize = 40.sp,
+                fontWeight = FontWeight(500),
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(bottom = 16.dp)
+            )
+        }
+    }
+}
+
+@Composable
+fun FixedSizeInfoCard(title: String, value: String, width: Int = 150, height: Int = 100)
+{
+    ElevatedCard(
+        elevation = CardDefaults.cardElevation(6.dp),
+        modifier = Modifier.padding(horizontal = 20.dp).size(width = width.dp, height = height.dp),
+        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
+    )
+    {
+        Column(verticalArrangement = Arrangement.Center, modifier = Modifier.fillMaxSize())
+        {
+            Text(
+                text = title,
+                fontSize = 16.sp,
+                fontWeight = FontWeight(500),
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 8.dp)
+            )
+            Text(
+                text = value,
+                fontSize = 40.sp,
+                fontWeight = FontWeight(500),
+                modifier = Modifier.align(Alignment.CenterHorizontally).padding(bottom = 8.dp)
+            )
+        }
     }
 }

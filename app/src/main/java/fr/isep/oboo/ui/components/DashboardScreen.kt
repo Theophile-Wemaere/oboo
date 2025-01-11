@@ -112,60 +112,6 @@ fun DashboardContent(roomsFlow: Flow<List<Room>>, modifier: Modifier = Modifier,
     }
 }
 
-@Composable
-fun InfoCard(title: String, value: String, modifier: Modifier = Modifier)
-{
-    ElevatedCard(
-        elevation = CardDefaults.cardElevation(6.dp),
-        modifier = Modifier.padding(horizontal = 20.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
-    )
-    {
-        Column(modifier = modifier)
-        {
-            Text(
-                text = title,
-                fontSize = 16.sp,
-                fontWeight = FontWeight(500),
-                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 16.dp)
-            )
-            Text(
-                text = value,
-                fontSize = 40.sp,
-                fontWeight = FontWeight(500),
-                modifier = Modifier.align(Alignment.CenterHorizontally).padding(bottom = 16.dp)
-            )
-        }
-    }
-}
-
-@Composable
-fun FixedSizeInfoCard(title: String, value: String, width: Int = 150, height: Int = 100)
-{
-    ElevatedCard(
-        elevation = CardDefaults.cardElevation(6.dp),
-        modifier = Modifier.padding(horizontal = 20.dp).size(width = width.dp, height = height.dp),
-        colors = CardDefaults.cardColors(containerColor = MaterialTheme.colorScheme.surfaceContainer)
-    )
-    {
-        Column(verticalArrangement = Arrangement.Center, modifier = Modifier.fillMaxSize())
-        {
-            Text(
-                text = title,
-                fontSize = 16.sp,
-                fontWeight = FontWeight(500),
-                modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 8.dp)
-            )
-            Text(
-                text = value,
-                fontSize = 40.sp,
-                fontWeight = FontWeight(500),
-                modifier = Modifier.align(Alignment.CenterHorizontally).padding(bottom = 8.dp)
-            )
-        }
-    }
-}
-
 //endregion Composables
 
 //region Previews
