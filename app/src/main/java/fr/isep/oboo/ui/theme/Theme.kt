@@ -12,19 +12,6 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 
 private val DarkColorScheme = darkColorScheme(
-//    primary = Purple80,
-//    secondary = PurpleGrey80,
-//    tertiary = Pink80
-
-//    background = Stone900,
-//    primary = Emerald700,
-//    onPrimary = Color.White,
-//    surfaceContainer = Stone800,
-//    onSurface = Color.White,
-//    onSurfaceVariant = Gray200,
-//    error = Red600,
-//    onError = Color.White,
-
     primary = Emerald700,
     onPrimary = Color.White,
     primaryContainer = Emerald600,
@@ -34,9 +21,9 @@ private val DarkColorScheme = darkColorScheme(
     onSecondary = Color.White,
     secondaryContainer = Emerald600,
     onSecondaryContainer = Color.White,
-    tertiary = Emerald700,
+    tertiary = Blue400,
     onTertiary = Color.White,
-    tertiaryContainer = Emerald600,
+    tertiaryContainer = Blue300,
     onTertiaryContainer = Color.White,
     background = Zinc900,
     onBackground = Color.Black,
@@ -49,7 +36,7 @@ private val DarkColorScheme = darkColorScheme(
     inverseOnSurface = Color.White,
     error = Red600,
     onError = Color.White,
-    errorContainer = Red300,
+    errorContainer = Red500,
     onErrorContainer = Red800,
     // outline = ,
     // outlineVariant = ,
@@ -60,28 +47,10 @@ private val DarkColorScheme = darkColorScheme(
     surfaceContainerHighest = Zinc600,
     surfaceContainerLow = Zinc900,
     surfaceContainerLowest = Zinc950,
-
-//    surfaceContainer = Stone800,
-//    surfaceContainerHigh = Zinc900,
-//    surfaceContainerHighest = Zinc950,
-//    surfaceContainerLow = Zinc700,
-//    surfaceContainerLowest = Zinc600,
     // surfaceDim = ,
 )
 
 private val LightColorScheme = lightColorScheme(
-//    primary = Purple40,
-//    secondary = PurpleGrey40,
-//    tertiary = Pink40
-
-//    background = Slate50,
-//    primary = Emerald700,
-//    surfaceContainer = Color.White,
-//    onSurface = Color.Black,
-//    onSurfaceVariant = Gray700,
-//    error = Red600,
-//    onError = Color.White,
-
     primary = Emerald700,
     onPrimary = Color.White,
     primaryContainer = Emerald600,
@@ -91,9 +60,9 @@ private val LightColorScheme = lightColorScheme(
     onSecondary = Color.White,
     secondaryContainer = Emerald600,
     onSecondaryContainer = Color.White,
-    tertiary = Emerald700,
+    tertiary = Blue400,
     onTertiary = Color.White,
-    tertiaryContainer = Emerald600,
+    tertiaryContainer = Blue300,
     onTertiaryContainer = Color.White,
     background = Gray50,
     onBackground = Color.Black,
@@ -106,7 +75,7 @@ private val LightColorScheme = lightColorScheme(
     inverseOnSurface = Color.White,
     error = Red600,
     onError = Color.White,
-    errorContainer = Red300,
+    errorContainer = Red500,
     onErrorContainer = Red800,
     // outline = ,
     // outlineVariant = ,
@@ -117,12 +86,6 @@ private val LightColorScheme = lightColorScheme(
     surfaceContainerHighest = Zinc300,
     surfaceContainerLow = Zinc100,
     surfaceContainerLowest = Zinc50,
-
-//    surfaceContainer = Color.White,
-//    surfaceContainerHigh = Zinc700,
-//    surfaceContainerHighest = Zinc900,
-//    surfaceContainerLow = Zinc300,
-//    surfaceContainerLowest = Zinc200,
     // surfaceDim = ,
 )
 

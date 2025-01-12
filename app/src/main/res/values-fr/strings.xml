@@ -31,4 +31,9 @@
     <string name="infoCard_RoomAvailability">Disponibilité des salles</string>
     <string name="tabFloors">Étages</string>
     <string name="tabRooms">Salles</string>
+    <string name="infoCard_Status">Statut</string>
+    <string name="infoCard_Building">Bâtiment</string>
+    <string name="infoCard_Floor">Étage</string>
+    <string name="timeSlotSubject_Available">Disponible</string>
+    <string name="badge_Now">Maintenant</string>
 </resources>

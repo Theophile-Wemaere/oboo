@@ -143,7 +143,7 @@ fun FloorDetailTabInformation(building: Building, floor: Floor, roomsFlow: Flow<
                 FixedSizeInfoCard(stringResource(R.string.infoCard_UnavailableRooms), unavailableRooms.toInt().toString())
             }
             Spacer(Modifier.size(10.dp))
-            InfoCard(stringResource(R.string.infoCard_RoomAvailability), "$roomAvailabilityPercentage%", Modifier.fillMaxWidth())
+            InfoCard(stringResource(R.string.infoCard_RoomAvailability), "$roomAvailabilityPercentage%", modifier = Modifier.fillMaxWidth())
         }
     }
 }

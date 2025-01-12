@@ -5,7 +5,10 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import fr.isep.oboo.model.Building
+import fr.isep.oboo.model.Floor
 import fr.isep.oboo.model.Room
+import fr.isep.oboo.model.TimeSlot
 import fr.isep.oboo.ui.components.RoomDetailScreen
 import fr.isep.oboo.ui.theme.ObooTheme
 
@@ -29,12 +32,14 @@ class RoomDetailActivity: ComponentActivity()
         }
 
         val db: ObooDatabase = ObooDatabase.getInstance(applicationContext)
-        val roomDAO = db.roomDAO()
-        val room: Room = roomDAO.getRoomById(roomId)
+        val room: Room = db.roomDAO().getRoomById(roomId)
+        val timeSlots: List<TimeSlot> = db.roomDAO().getTimeSlots(roomId)
+        val floor: Floor = db.floorDAO().getFloorById(room.floorId)
+        val building: Building = db.buildingDAO().getBuildingById(floor.buildingId)
 
         setContent {
             ObooTheme {
-                RoomDetailScreen(this, menuIndex, room, onReturn = { this.onBackPressed() })
+                RoomDetailScreen(this, menuIndex, building, floor, room, timeSlots, onReturn = { this.onBackPressed() })
             }
         }
     }

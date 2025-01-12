@@ -4,7 +4,9 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import fr.isep.oboo.model.Floor
 import fr.isep.oboo.model.Room
+import fr.isep.oboo.model.TimeSlot
 import kotlinx.coroutines.flow.Flow
 
 @Dao
@@ -24,4 +26,7 @@ interface RoomDAO
 
     @Query("SELECT * FROM Room ORDER BY number ASC")
     fun getAllRooms(): Flow<List<Room>>
+
+    @Query("SELECT * FROM TimeSlot WHERE roomId = :roomId ORDER BY startTime ASC")
+    fun getTimeSlots(roomId: Long): List<TimeSlot>
 }

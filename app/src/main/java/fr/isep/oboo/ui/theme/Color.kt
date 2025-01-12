@@ -25,11 +25,15 @@ val Stone800 = Color(0xFF292524)
 val Stone900 = Color(0xFF1C1917)
 
 val Red300 = Color(0xFFFCA5A5)
+val Red500 = Color(0xFFEF4444)
 val Red600 = Color(0xFFDC2626)
 val Red800 = Color(0xFF991B1B)
 
 val Emerald600 = Color(0xFF059669)
 val Emerald700 = Color(0xFF047857)
+
+val Blue300 = Color(0xFF93C5FD)
+val Blue400 = Color(0xFF60A5fA)
 
 // Default Material v3 colors
 val Purple80 = Color(0xFFD0BCFF)

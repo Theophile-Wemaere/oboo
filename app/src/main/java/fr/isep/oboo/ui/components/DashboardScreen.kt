@@ -105,7 +105,7 @@ fun DashboardContent(roomsFlow: Flow<List<Room>>, modifier: Modifier = Modifier,
                 FixedSizeInfoCard(stringResource(R.string.infoCard_UnavailableRooms), unavailableRooms.toInt().toString())
             }
             Spacer(Modifier.size(10.dp))
-            InfoCard(stringResource(R.string.infoCard_RoomAvailability), "$roomAvailabilityPercentage%", Modifier.fillMaxWidth())
+            InfoCard(stringResource(R.string.infoCard_RoomAvailability), "$roomAvailabilityPercentage%", modifier = Modifier.fillMaxWidth())
 
             // TODO: Add graph to visualize room availability over the day
         }
@@ -161,8 +161,8 @@ fun DoubleInfoCardPreview()
     ObooTheme {
         Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly)
         {
-            InfoCard("Available rooms", "14", Modifier.padding(horizontal = 16.dp))
-            InfoCard("Occupied rooms", "19", Modifier.padding(horizontal = 16.dp))
+            InfoCard("Available rooms", "14", modifier = Modifier.padding(horizontal = 16.dp))
+            InfoCard("Occupied rooms", "19", modifier = Modifier.padding(horizontal = 16.dp))
         }
     }
 }
@@ -172,7 +172,7 @@ fun DoubleInfoCardPreview()
 fun InfoCardPreview()
 {
     ObooTheme {
-        InfoCard("Room availability", "42%", Modifier.fillMaxWidth())
+        InfoCard("Room availability", "42%", modifier = Modifier.fillMaxWidth())
     }
 }
 

@@ -43,6 +43,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
@@ -169,7 +170,7 @@ fun <T> PullToRefreshLazyColumn(
 }
 
 @Composable
-fun InfoCard(title: String, value: String, modifier: Modifier = Modifier)
+fun InfoCard(title: String, value: String, titleColor: Color = Color.Unspecified, valueColor: Color = Color.Unspecified, modifier: Modifier = Modifier)
 {
     ElevatedCard(
         elevation = CardDefaults.cardElevation(6.dp),
@@ -183,12 +184,14 @@ fun InfoCard(title: String, value: String, modifier: Modifier = Modifier)
                 text = title,
                 fontSize = 16.sp,
                 fontWeight = FontWeight(500),
+                color = titleColor,
                 modifier = Modifier.align(Alignment.CenterHorizontally).padding(top = 16.dp)
             )
             Text(
                 text = value,
                 fontSize = 40.sp,
                 fontWeight = FontWeight(500),
+                color = valueColor,
                 modifier = Modifier.align(Alignment.CenterHorizontally).padding(bottom = 16.dp)
             )
         }

@@ -30,4 +30,9 @@
     <string name="infoCard_RoomAvailability">Room availability</string>
     <string name="tabFloors">Floors</string>
     <string name="tabRooms">Rooms</string>
+    <string name="infoCard_Status">Status</string>
+    <string name="infoCard_Building">Building</string>
+    <string name="infoCard_Floor">Floor</string>
+    <string name="timeSlotSubject_Available">Available</string>
+    <string name="badge_Now">Now</string>
 </resources>

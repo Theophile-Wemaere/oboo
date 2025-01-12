@@ -159,7 +159,7 @@ fun BuildingDetailTabInformation(building: Building, roomsFlow: Flow<List<Room>>
                 FixedSizeInfoCard(stringResource(R.string.infoCard_UnavailableRooms), unavailableRooms.toInt().toString())
             }
             Spacer(Modifier.size(10.dp))
-            InfoCard(stringResource(R.string.infoCard_RoomAvailability), "$roomAvailabilityPercentage%", Modifier.fillMaxWidth())
+            InfoCard(stringResource(R.string.infoCard_RoomAvailability), "$roomAvailabilityPercentage%", modifier = Modifier.fillMaxWidth())
             Spacer(Modifier.size(10.dp))
             Image(
                 painter = painterResource(buildingPictureId),
