@@ -104,9 +104,12 @@ fun BottomNavigationBar(sourceActivity: Activity, selectedItemIndex: Int)
                 selected = (selectedItemIndex == index),
                 onClick = {
                     // selectedItemIndex = index
-                    val intent = Intent(sourceActivity, bottomNavigationItem.destinationActivity)
-                    intent.putExtra("menuIndex", index)
-                    sourceActivity.startActivity(intent)
+                    if (selectedItemIndex != index)
+                    {
+                        val intent = Intent(sourceActivity, bottomNavigationItem.destinationActivity)
+                        intent.putExtra("menuIndex", index)
+                        sourceActivity.startActivity(intent)
+                    }
                 },
                 label = {
                     Text(bottomNavigationItem.title)
