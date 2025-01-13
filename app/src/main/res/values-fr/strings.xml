@@ -36,4 +36,7 @@
     <string name="infoCard_Floor">Étage</string>
     <string name="timeSlotSubject_Available">Disponible</string>
     <string name="badge_Now">Maintenant</string>
+    <string name="dashboardChartTitle">Disponibilité des salles aujourd\'hui</string>
+    <string name="dashboardChartLabel_Available">Disponible</string>
+    <string name="dashboardChartLabel_Unavailable">Indisponible</string>
 </resources>

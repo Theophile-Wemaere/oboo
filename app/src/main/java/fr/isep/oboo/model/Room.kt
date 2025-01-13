@@ -8,6 +8,7 @@ import androidx.room.PrimaryKey
 import fr.isep.oboo.ObooApp
 import fr.isep.oboo.ObooDatabase
 import fr.isep.oboo.R
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
 
@@ -36,17 +37,44 @@ class Room(val number: String, val name: String, val floorId: Long)
     {
         // Time comparisons are done in UTC. Time is only localized when being displayed to the user.
         val timeSlots: List<TimeSlot> = ObooDatabase.getInstance(ObooApp.applicationContext()).timeSlotDAO().getAllTimeSlotByRoom(this.id)
-        val now: LocalDateTime = LocalDateTime.now(ZoneId.of("Z"))
+
+        if (timeSlots.isEmpty())
+            return true
+
+        val timeSlotDay: LocalDateTime = LocalDateTime.parse(timeSlots.first().startTime.dropLast(1))
+        val instant: LocalDateTime = LocalDateTime.now(ZoneId.of("Z"))
+        val now: LocalDateTime = LocalDateTime.of(timeSlotDay.year, timeSlotDay.month, timeSlotDay.dayOfMonth, instant.hour, instant.minute, instant.second)
 
         for (timeSlot in timeSlots)
         {
             val startTime = LocalDateTime.parse(timeSlot.startTime.dropLast(1))
             val endTime = LocalDateTime.parse(timeSlot.endTime.dropLast(1))
 
-            Log.d("Room Model", "[${this.number}] Checking if now ($now) is between $startTime and $endTime")
-
             // If the current time fits into a time slot, then the room is not available
             if (now.isAfter(startTime) && now.isBefore(endTime))
+                return false
+        }
+
+        return true
+    }
+
+    fun isAvailableAt(hourUTC: Int): Boolean
+    {
+        val timeSlots: List<TimeSlot> = ObooDatabase.getInstance(ObooApp.applicationContext()).timeSlotDAO().getAllTimeSlotByRoom(this.id)
+
+        if (timeSlots.isEmpty())
+            return true
+
+        val now: LocalDateTime = LocalDateTime.parse(timeSlots.first().startTime.dropLast(1))
+        val specificTime: LocalDateTime = LocalDateTime.of(now.year, now.month, now.dayOfMonth, hourUTC, 0, 0)
+
+        for (timeSlot in timeSlots)
+        {
+            val startTime = LocalDateTime.parse(timeSlot.startTime.dropLast(1))
+            val endTime = LocalDateTime.parse(timeSlot.endTime.dropLast(1))
+
+            // If the specific time fits into a time slot, then the room is not available at that specific time
+            if (specificTime.isAfter(startTime) && specificTime.isBefore(endTime))
                 return false
         }
 

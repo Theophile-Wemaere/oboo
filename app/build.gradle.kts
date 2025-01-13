@@ -74,4 +74,6 @@ dependencies {
     // Retrofit
     implementation(libs.retrofit)
     implementation(libs.converter.gson)
+    // Compose Charts (https://ehsannarmani.github.io/ComposeCharts/)
+    implementation (libs.compose.charts)
 }

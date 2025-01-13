@@ -27,6 +27,9 @@ interface RoomDAO
     @Query("SELECT * FROM Room ORDER BY number ASC")
     fun getAllRooms(): Flow<List<Room>>
 
+    @Query("SELECT * FROM Room ORDER BY number ASC")
+    fun getAllRoomsStatic(): List<Room>
+
     @Query("SELECT * FROM TimeSlot WHERE roomId = :roomId ORDER BY startTime ASC")
     fun getTimeSlots(roomId: Long): List<TimeSlot>
 }

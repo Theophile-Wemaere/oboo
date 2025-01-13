@@ -12,12 +12,6 @@ import fr.isep.oboo.dao.TimeSlotDAO
 import fr.isep.oboo.ui.components.DashboardScreen
 import fr.isep.oboo.ui.theme.ObooTheme
 
-private lateinit var db: ObooDatabase
-private lateinit var buildingDAO: BuildingDAO
-private lateinit var floorDAO: FloorDAO
-private lateinit var roomDAO: RoomDAO
-private lateinit var timeSlotDAO: TimeSlotDAO
-
 class DashboardActivity : ComponentActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?)
@@ -32,9 +26,11 @@ class DashboardActivity : ComponentActivity()
             menuIndex = extras.getInt("menuIndex")
         }
 
+        val db = ObooDatabase.getInstance(applicationContext)
+
         setContent {
             ObooTheme {
-                DashboardScreen(this, menuIndex, ObooDatabase.getInstance(applicationContext).roomDAO().getAllRooms())
+                DashboardScreen(this, menuIndex, db.roomDAO().getAllRooms(), db.roomDAO().getAllRoomsStatic())
             }
         }
     }

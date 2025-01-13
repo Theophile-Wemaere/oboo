@@ -34,7 +34,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.platform.LocalContext
@@ -50,12 +49,15 @@ import fr.isep.oboo.model.Floor
 import fr.isep.oboo.model.Room
 import fr.isep.oboo.model.TimeSlot
 import fr.isep.oboo.ui.theme.ObooTheme
-import kotlinx.coroutines.flow.Flow
+import java.time.Instant
+import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
+import java.time.ZoneOffset
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 import java.time.temporal.ChronoUnit
+import java.util.TimeZone
 
 //region Composables
 
@@ -194,42 +196,6 @@ fun RoomDetailTabTimetable(room: Room, timeSlots: List<TimeSlot>)
             }
         }
     }
-
-//    Column(verticalArrangement = Arrangement.spacedBy(10.dp), modifier = Modifier.padding(vertical = 16.dp, horizontal = 10.dp))
-//    {
-//        val dtf: DateTimeFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'HH:mm:ss'Z'")
-//        var previousEndTime: LocalDateTime? = null
-//
-//        Log.e("test", timeSlots.toString())
-//
-//        for (timeSlot in timeSlots)
-//        {
-//            if (previousEndTime == null)
-//            {
-//                TimeSlotCard(timeSlot)
-//                previousEndTime = LocalDateTime.parse(timeSlot.endTime.dropLast(1))
-//                continue
-//            }
-//
-//            val start = LocalDateTime.parse(timeSlot.endTime.dropLast(1))
-//            // If the previous TimeSlot and the current TimeSlot are NOT consecutive,
-//            // separate both with a TimeSlot with the subject "Available" (to "fill-in" the hole)
-//            if (ChronoUnit.MINUTES.between(previousEndTime, start) > 0)
-//                TimeSlotCard(TimeSlot(stringResource(R.string.timeSlotSubject_Available), previousEndTime.format(dtf), timeSlot.startTime, -1))
-//
-//            TimeSlotCard(timeSlot)
-//            // Set the current TimeSlot endTime as the previousEndTime for the next iteration
-//            previousEndTime = LocalDateTime.parse(timeSlot.endTime.dropLast(1))
-//        }
-//
-//        if (previousEndTime == null)
-//            return
-//
-//        // Add an available slot to fill-in the gap to 20:00 (Europe/Paris TZ)
-//        val lastTimeSlotEndTime = ZonedDateTime.of(previousEndTime, ZoneId.of("Europe/Paris"))
-//        if (lastTimeSlotEndTime.hour < 20)
-//            TimeSlotCard(TimeSlot(stringResource(R.string.timeSlotSubject_Available), previousEndTime.format(dtf), LocalDateTime.of(previousEndTime.year, previousEndTime.month, previousEndTime.dayOfMonth, 20, 0,0).format(dtf), -1))
-//    }
 }
 
 @Composable
@@ -242,7 +208,7 @@ fun TimeSlotCard(timeSlot: TimeSlot, modifier: Modifier = Modifier)
     val start = LocalDateTime.parse(timeSlot.startTime.dropLast(1))
     val end = LocalDateTime.parse(timeSlot.endTime.dropLast(1))
     val dtf = DateTimeFormatter.ofPattern("HH:mm")
-    val now = LocalDateTime.now()
+    val now = LocalDateTime.now(ZoneOffset.UTC)
     // Duration of the event in blocks of 30 minutes (a duration of 5 means 2h30)
     var duration = ChronoUnit.MINUTES.between(start, end).toInt() / 30
 

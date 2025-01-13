@@ -2,6 +2,7 @@ package fr.isep.oboo
 
 import android.app.Application
 import android.content.Context
+import android.util.Log
 import kotlinx.coroutines.MainScope
 import kotlinx.coroutines.launch
 
