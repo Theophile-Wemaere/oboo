@@ -145,6 +145,7 @@ fun RoomList(sourceActivity: Activity, rooms: Flow<List<Room>>, modifier: Modifi
 
                     try {
                         refreshDatabase()
+                        Log.i("Oboo API", "Successfully refreshed the local database using API data.")
                     }
                     catch (e: IOException) {
                         e.printStackTrace()
@@ -156,7 +157,6 @@ fun RoomList(sourceActivity: Activity, rooms: Flow<List<Room>>, modifier: Modifi
                         isRefreshing = false
                         return@launch
                     }
-                    Log.i("Oboo API", "Successfully refreshed the local database using API data.")
                     isRefreshing = false
                 }
             },

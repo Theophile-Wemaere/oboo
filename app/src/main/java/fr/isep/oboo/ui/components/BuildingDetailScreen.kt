@@ -28,7 +28,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -40,19 +39,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
-import fr.isep.oboo.ObooApp
-import fr.isep.oboo.ObooDatabase
 import fr.isep.oboo.R
 import fr.isep.oboo.model.Building
 import fr.isep.oboo.model.Floor
 import fr.isep.oboo.model.Room
-import fr.isep.oboo.refreshDatabase
 import fr.isep.oboo.ui.theme.ObooTheme
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOf
-import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import java.io.IOException
 import kotlin.math.round
 
 //region Composables

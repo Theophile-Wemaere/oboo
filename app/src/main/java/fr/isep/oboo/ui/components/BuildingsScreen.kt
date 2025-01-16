@@ -96,6 +96,7 @@ fun BuildingList(sourceActivity: Activity, buildings: Flow<List<Building>>, modi
 
                     try {
                         refreshDatabase()
+                        Log.i("Oboo API", "Successfully refreshed the local database using API data.")
                     }
                     catch (e: IOException) {
                         e.printStackTrace()
@@ -107,7 +108,6 @@ fun BuildingList(sourceActivity: Activity, buildings: Flow<List<Building>>, modi
                         isRefreshing = false
                         return@launch
                     }
-                    Log.i("Oboo API", "Successfully refreshed the local database using API data.")
                     isRefreshing = false
                 }
             }

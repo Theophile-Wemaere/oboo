@@ -53,6 +53,7 @@ import androidx.compose.ui.unit.sp
 import fr.isep.oboo.BuildingsActivity
 import fr.isep.oboo.DashboardActivity
 import fr.isep.oboo.FloorsActivity
+import fr.isep.oboo.ProfileActivity
 import fr.isep.oboo.R
 import fr.isep.oboo.RoomsActivity
 import kotlinx.coroutines.flow.Flow
@@ -95,7 +96,7 @@ fun BottomNavigationBar(sourceActivity: Activity, selectedItemIndex: Int)
         BottomNavigationItem(stringResource(R.string.navMenu_Buildings), Icons.Filled.Apartment, Icons.Outlined.Apartment, BuildingsActivity::class.java),
         BottomNavigationItem(stringResource(R.string.navMenu_Floors), Icons.Filled.Stairs, Icons.Outlined.Stairs, FloorsActivity::class.java),
         BottomNavigationItem(stringResource(R.string.navMenu_Rooms), Icons.Filled.DoorFront, Icons.Outlined.DoorFront, RoomsActivity::class.java),
-        BottomNavigationItem(stringResource(R.string.navMenu_Profile), Icons.Filled.AccountCircle, Icons.Outlined.AccountCircle, DashboardActivity::class.java),
+        BottomNavigationItem(stringResource(R.string.navMenu_Profile), Icons.Filled.AccountCircle, Icons.Outlined.AccountCircle, ProfileActivity::class.java),
     )
 
     NavigationBar {

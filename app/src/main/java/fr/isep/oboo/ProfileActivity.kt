@@ -1,13 +1,14 @@
 package fr.isep.oboo
 
 import android.os.Bundle
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import fr.isep.oboo.ui.components.DashboardScreen
+import fr.isep.oboo.ui.components.ProfileScreen
 import fr.isep.oboo.ui.theme.ObooTheme
 
-class DashboardActivity : ComponentActivity()
+class ProfileActivity: ComponentActivity()
 {
     override fun onCreate(savedInstanceState: Bundle?)
     {
@@ -20,12 +21,13 @@ class DashboardActivity : ComponentActivity()
         if (extras != null) {
             menuIndex = extras.getInt("menuIndex")
         }
-
-        val db = ObooDatabase.getInstance(applicationContext)
+        else {
+            Log.e("Profile Activity", "Menu index not provided in the Intent, defaulting to 0.")
+        }
 
         setContent {
             ObooTheme {
-                DashboardScreen(this, menuIndex, db.roomDAO().getAllRooms(), db.roomDAO().getAllRoomsStatic())
+                ProfileScreen(this, menuIndex, ObooDatabase.getInstance(ObooApp.applicationContext()).apiKeyDAO().getAPIKey()!!.email, { this.onBackPressed() })
             }
         }
     }

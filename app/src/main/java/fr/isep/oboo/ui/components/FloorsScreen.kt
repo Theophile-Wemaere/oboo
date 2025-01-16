@@ -92,6 +92,7 @@ fun FloorList(sourceActivity: Activity, floors: Flow<List<Floor>>, modifier: Mod
 
                     try {
                         refreshDatabase()
+                        Log.i("Oboo API", "Successfully refreshed the local database using API data.")
                     }
                     catch (e: IOException) {
                         e.printStackTrace()
@@ -103,7 +104,6 @@ fun FloorList(sourceActivity: Activity, floors: Flow<List<Floor>>, modifier: Mod
                         isRefreshing = false
                         return@launch
                     }
-                    Log.i("Oboo API", "Successfully refreshed the local database using API data.")
                     isRefreshing = false
                 }
             }

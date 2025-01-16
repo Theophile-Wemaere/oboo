@@ -38,4 +38,12 @@
     <string name="dashboardChartTitle">Today\'s room availability</string>
     <string name="dashboardChartLabel_Available">Available</string>
     <string name="dashboardChartLabel_Unavailable">Unavailable</string>
+    <string name="screenTitle_Login">Login</string>
+    <string name="inputField_ISEPEmail">ISEP Email</string>
+    <string name="button_Next">Next</string>
+    <string name="inputField_VerificationCode">Verification code</string>
+    <string name="button_LogIn">Log in</string>
+    <string name="text_PleaseEnterOTP">Please enter the code that you received at</string>
+    <string name="screenTitle_Profile">Profile</string>
+    <string name="button_LogOut">Log out</string>
 </resources>

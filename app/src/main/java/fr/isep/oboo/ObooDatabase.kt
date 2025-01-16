@@ -3,17 +3,19 @@ package fr.isep.oboo
 import android.content.Context
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import fr.isep.oboo.dao.APIKeyDAO
 import fr.isep.oboo.dao.BuildingDAO
 import fr.isep.oboo.dao.FloorDAO
 import fr.isep.oboo.dao.RoomDAO
 import fr.isep.oboo.dao.TimeSlotDAO
+import fr.isep.oboo.model.APIKey
 import fr.isep.oboo.model.Building
 import fr.isep.oboo.model.Floor
 import fr.isep.oboo.model.Room
 import fr.isep.oboo.model.TimeSlot
 
 @Database(
-    entities = [Building::class, Floor::class, Room::class, TimeSlot::class],
+    entities = [Building::class, Floor::class, Room::class, TimeSlot::class, APIKey::class],
     version = 1,
     exportSchema = false
 )
@@ -26,6 +28,8 @@ abstract class ObooDatabase: RoomDatabase()
     abstract fun roomDAO(): RoomDAO
 
     abstract fun timeSlotDAO(): TimeSlotDAO
+
+    abstract fun apiKeyDAO(): APIKeyDAO
 
     // Singleton instance of the database object that can be accessed in the entire project
     companion object {

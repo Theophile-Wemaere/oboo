@@ -39,4 +39,12 @@
     <string name="dashboardChartTitle">Disponibilité des salles aujourd\'hui</string>
     <string name="dashboardChartLabel_Available">Disponible</string>
     <string name="dashboardChartLabel_Unavailable">Indisponible</string>
+    <string name="screenTitle_Login">Connexion</string>
+    <string name="inputField_ISEPEmail">Email ISEP</string>
+    <string name="button_Next">Suivant</string>
+    <string name="inputField_VerificationCode">Code de vérification</string>
+    <string name="button_LogIn">Connexion</string>
+    <string name="text_PleaseEnterOTP">Entrez le code envoyé à</string>
+    <string name="screenTitle_Profile">Profil</string>
+    <string name="button_LogOut">Déconnexion</string>
 </resources>
