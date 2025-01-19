@@ -3,7 +3,6 @@ package fr.isep.oboo.ui.components
 import android.app.Activity
 import android.content.Intent
 import android.util.Log
-import android.widget.Space
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,7 +13,6 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.Logout
-import androidx.compose.material.icons.automirrored.filled.Send
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ElevatedButton
 import androidx.compose.material3.ExperimentalMaterial3Api
@@ -30,24 +28,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.capitalize
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import fr.isep.oboo.LoginActivity
-import fr.isep.oboo.OTPActivity
 import fr.isep.oboo.ObooApp
 import fr.isep.oboo.ObooDatabase
 import fr.isep.oboo.R
-import fr.isep.oboo.RetrofitInstance
-import fr.isep.oboo.dto.OneTimePasswordDTO
-import fr.isep.oboo.model.Building
-import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
-import retrofit2.HttpException
-import retrofit2.Response
-import java.io.IOException
-import java.util.Locale
 
 //region Composables
 
@@ -94,8 +82,8 @@ fun ProfileContent(sourceActivity: Activity, email: String, modifier: Modifier =
                 .padding(32.dp)
         )
         Spacer(Modifier.size(16.dp))
-        Text(text = "${firstName.capitalize()} ${lastName.uppercase()}", fontSize = MaterialTheme.typography.displaySmall.fontSize, fontWeight = FontWeight.Bold)
-        Text("($email)")
+        Text(text = "${firstName.capitalize()} ${lastName.uppercase()}", fontSize = MaterialTheme.typography.displaySmall.fontSize, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onPrimary)
+        Text(text = "($email)", color = MaterialTheme.colorScheme.onPrimary)
         Spacer(Modifier.size(48.dp))
         ElevatedButton(
             colors = ButtonDefaults.buttonColors(

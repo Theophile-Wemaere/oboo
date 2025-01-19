@@ -29,6 +29,7 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.PreviewLightDark
 import androidx.compose.ui.unit.dp
@@ -41,6 +42,7 @@ import ir.ehsannarmani.compose_charts.models.BarProperties
 import ir.ehsannarmani.compose_charts.models.Bars
 import ir.ehsannarmani.compose_charts.models.GridProperties
 import ir.ehsannarmani.compose_charts.models.HorizontalIndicatorProperties
+import ir.ehsannarmani.compose_charts.models.LabelHelperProperties
 import ir.ehsannarmani.compose_charts.models.LabelProperties
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
@@ -188,7 +190,7 @@ fun DashboardChart(totalRooms: Double, barsData: List<Bars>)
 {
     Column(Modifier.padding(bottom = 32.dp, start = 10.dp, end = 10.dp))
     {
-        Text(stringResource(R.string.dashboardChartTitle), fontSize = 20.sp, fontWeight = FontWeight.Bold)
+        Text(stringResource(R.string.dashboardChartTitle), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onPrimary)
         Spacer(Modifier.size(10.dp))
         ColumnChart(
             modifier = Modifier.fillMaxSize().padding(horizontal = 6.dp),
@@ -208,11 +210,15 @@ fun DashboardChart(totalRooms: Double, barsData: List<Bars>)
             ),
             labelProperties = LabelProperties(
                 enabled = true,
-                textStyle = MaterialTheme.typography.labelSmall,
+                textStyle = TextStyle(color = MaterialTheme.colorScheme.onPrimary),
                 rotation = LabelProperties.Rotation(
                     mode = LabelProperties.Rotation.Mode.Force,
                     degree = -45f
                 )
+            ),
+            labelHelperProperties = LabelHelperProperties(
+                enabled = true,
+                textStyle = TextStyle(MaterialTheme.colorScheme.onPrimary)
             ),
             animationSpec = spring(
                 dampingRatio = Spring.DampingRatioMediumBouncy,

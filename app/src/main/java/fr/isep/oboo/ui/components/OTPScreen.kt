@@ -47,6 +47,7 @@ import fr.isep.oboo.R
 import fr.isep.oboo.RetrofitInstance
 import fr.isep.oboo.dto.APIKeyDTO
 import fr.isep.oboo.model.APIKey
+import fr.isep.oboo.refreshDatabase
 import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import retrofit2.Response
@@ -87,7 +88,7 @@ fun OTPScreenContent(sourceActivity: Activity, email: String, modifier: Modifier
                 contentDescription = "Oboo logo",
                 modifier = Modifier.size(250.dp)
             )
-            Text(text = stringResource(R.string.app_name), fontSize = 48.sp, fontWeight = FontWeight.Bold)
+            Text(text = stringResource(R.string.app_name), fontSize = 48.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onPrimary)
         }
         Spacer(Modifier.size(48.dp))
 
@@ -112,8 +113,8 @@ fun OTPScreenContent(sourceActivity: Activity, email: String, modifier: Modifier
         Spacer(Modifier.size(16.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally)
         {
-            Text(stringResource(R.string.text_PleaseEnterOTP))
-            Text(text = email, textDecoration = TextDecoration.Underline)
+            Text(stringResource(R.string.text_PleaseEnterOTP), color = MaterialTheme.colorScheme.onPrimary)
+            Text(text = email, textDecoration = TextDecoration.Underline, color = MaterialTheme.colorScheme.onPrimary)
         }
         Spacer(Modifier.size(16.dp))
         ElevatedButton(
@@ -145,6 +146,7 @@ fun OTPScreenContent(sourceActivity: Activity, email: String, modifier: Modifier
                             db.apiKeyDAO().deleteAPIKeys()
                             db.apiKeyDAO().setAPIKey(APIKey(email, APIKeyResponse.body()!!.key))
                             // Launch the Dashboard Activity
+                            refreshDatabase()
                             val intent = Intent(sourceActivity, DashboardActivity::class.java)
                             intent.putExtra("menuIndex", 0)
                             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
