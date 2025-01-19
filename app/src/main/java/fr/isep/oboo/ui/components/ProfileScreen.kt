@@ -26,6 +26,7 @@ import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.drawBehind
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -70,6 +71,7 @@ fun ProfileContent(sourceActivity: Activity, email: String, modifier: Modifier =
         val firstName = email.split("@")[0].split(".")[0]
         val lastName = email.split("@")[0].split(".")[1]
         val scope = rememberCoroutineScope()
+        val primaryColor = MaterialTheme.colorScheme.primary
 
         Text(
             text = "${firstName.first().uppercase()}${lastName.first().uppercase()}",
@@ -77,9 +79,13 @@ fun ProfileContent(sourceActivity: Activity, email: String, modifier: Modifier =
             color = MaterialTheme.colorScheme.onPrimary,
             fontWeight = FontWeight(500),
             modifier = Modifier
-                .clip(CircleShape)
-                .background(MaterialTheme.colorScheme.primary)
-                .padding(32.dp)
+                .padding(vertical = 64.dp)
+                .drawBehind {
+                    drawCircle(
+                        color = primaryColor,
+                        radius = 300f
+                    )
+                }
         )
         Spacer(Modifier.size(16.dp))
         Text(text = "${firstName.capitalize()} ${lastName.uppercase()}", fontSize = MaterialTheme.typography.displaySmall.fontSize, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onPrimary)
