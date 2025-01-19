@@ -104,7 +104,7 @@ fun DashboardScreen(sourceActivity: Activity, menuIndex: Int, rooms: Flow<List<R
             }
 
             barsData.add(Bars(
-                label = if (hour < 10) "0$hourLocal:00" else "$hourLocal:00",
+                label = if (hourLocal < 10) "0$hourLocal:00" else "$hourLocal:00",
                 values = listOf(
                     Bars.Data(label = stringResource(R.string.dashboardChartLabel_Available), value = availableRooms, color = SolidColor(primaryColor)),
                     Bars.Data(label = stringResource(R.string.dashboardChartLabel_Unavailable), value = -unavailableRooms, color = SolidColor(errorColor)),
