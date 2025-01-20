@@ -204,11 +204,15 @@ fun TimeSlotCard(timeSlot: TimeSlot, modifier: Modifier = Modifier)
     // Size for a 30min event
     val baseSize = 40
 
-    // start and end are in the local (phone) timezone and can thus be displayed to the user
+    val dtf = DateTimeFormatter.ofPattern("HH:mm").withZone(ZoneId.of("Europe/Paris"))
+
     val start = LocalDateTime.parse(timeSlot.startTime.dropLast(1))
     val end = LocalDateTime.parse(timeSlot.endTime.dropLast(1))
-    val dtf = DateTimeFormatter.ofPattern("HH:mm")
     val now = LocalDateTime.now(ZoneOffset.UTC)
+
+    val startLocal = ZonedDateTime.of(start, ZoneId.of("UTC"))
+    val endLocal = ZonedDateTime.of(end, ZoneId.of("UTC"))
+
     // Duration of the event in blocks of 30 minutes (a duration of 5 means 2h30)
     var duration = ChronoUnit.MINUTES.between(start, end).toInt() / 30
 
@@ -227,7 +231,7 @@ fun TimeSlotCard(timeSlot: TimeSlot, modifier: Modifier = Modifier)
         Row(verticalAlignment = Alignment.CenterVertically, horizontalArrangement = Arrangement.spacedBy(10.dp))
         {
             Text(
-                text = "${start.format(dtf)} - ${end.format(dtf)}",
+                text = "${startLocal.format(dtf)} - ${endLocal.format(dtf)}",
                 color = if (timeSlot.subject == stringResource(R.string.timeSlotSubject_Available)) MaterialTheme.colorScheme.onPrimaryContainer else MaterialTheme.colorScheme.onError
             )
             if (now.isAfter(start) && now.isBefore(end))
