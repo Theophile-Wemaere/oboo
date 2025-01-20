@@ -45,8 +45,6 @@ import ir.ehsannarmani.compose_charts.models.HorizontalIndicatorProperties
 import ir.ehsannarmani.compose_charts.models.LabelHelperProperties
 import ir.ehsannarmani.compose_charts.models.LabelProperties
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.flow.firstOrNull
 import kotlinx.coroutines.flow.flowOf
 import java.time.LocalDateTime
 import java.time.ZoneId
@@ -179,8 +177,6 @@ fun DashboardContent(roomsFlow: Flow<List<Room>>, graphData: List<Bars>, totalRo
                 }
             }
         }
-        // TODO: Add graph to visualize room availability over the day
-
         DashboardChart(totalRooms, graphData)
     }
 }

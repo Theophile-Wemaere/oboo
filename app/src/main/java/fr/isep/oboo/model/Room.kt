@@ -1,6 +1,5 @@
 package fr.isep.oboo.model
 
-import android.util.Log
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.res.stringResource
 import androidx.room.Entity
@@ -8,7 +7,6 @@ import androidx.room.PrimaryKey
 import fr.isep.oboo.ObooApp
 import fr.isep.oboo.ObooDatabase
 import fr.isep.oboo.R
-import java.time.LocalDate
 import java.time.LocalDateTime
 import java.time.ZoneId
 

@@ -5,7 +5,6 @@ import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import fr.isep.oboo.ui.components.LoginScreen
 import fr.isep.oboo.ui.components.OTPScreen
 import fr.isep.oboo.ui.theme.ObooTheme
 

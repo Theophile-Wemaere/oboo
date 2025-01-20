@@ -1,6 +1,5 @@
 package fr.isep.oboo
 
-import android.app.Activity
 import android.app.Application
 import android.content.Context
 import android.content.Intent
@@ -9,7 +8,6 @@ import fr.isep.oboo.dto.BuildingDTO
 import fr.isep.oboo.dto.FloorDTO
 import fr.isep.oboo.dto.RoomDTO
 import fr.isep.oboo.dto.TimeSlotDTO
-import fr.isep.oboo.model.APIKey
 import fr.isep.oboo.model.Building
 import fr.isep.oboo.model.Floor
 import fr.isep.oboo.model.Room
@@ -19,7 +17,6 @@ import kotlinx.coroutines.launch
 import retrofit2.HttpException
 import retrofit2.Response
 import java.io.IOException
-import kotlin.math.floor
 
 class ObooApp: Application()
 {

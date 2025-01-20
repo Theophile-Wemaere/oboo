@@ -4,7 +4,6 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
-import fr.isep.oboo.model.Room
 import fr.isep.oboo.model.TimeSlot
 import kotlinx.coroutines.flow.Flow
 
