@@ -22,7 +22,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -35,11 +34,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import fr.isep.oboo.BuildingDetailActivity
 import fr.isep.oboo.OTPActivity
 import fr.isep.oboo.R
 import fr.isep.oboo.RetrofitInstance
@@ -84,7 +81,7 @@ fun LoginScreenContent(sourceActivity: Activity, modifier: Modifier = Modifier)
                 contentDescription = "Oboo logo",
                 modifier = Modifier.size(250.dp)
             )
-            Text(text = stringResource(R.string.app_name), fontSize = 48.sp, color = MaterialTheme.colorScheme.onPrimary)
+            Text(text = stringResource(R.string.app_name), fontSize = 48.sp, color = MaterialTheme.colorScheme.onSurface, fontWeight = FontWeight.Bold)
         }
         Spacer(Modifier.size(48.dp))
 

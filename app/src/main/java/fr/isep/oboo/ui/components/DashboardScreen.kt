@@ -190,7 +190,7 @@ fun DashboardChart(totalRooms: Double, barsData: List<Bars>)
 {
     Column(Modifier.padding(bottom = 32.dp, start = 10.dp, end = 10.dp))
     {
-        Text(stringResource(R.string.dashboardChartTitle), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onPrimary)
+        Text(stringResource(R.string.dashboardChartTitle), fontSize = 20.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface)
         Spacer(Modifier.size(10.dp))
         ColumnChart(
             modifier = Modifier.fillMaxSize().padding(horizontal = 6.dp),
@@ -210,7 +210,7 @@ fun DashboardChart(totalRooms: Double, barsData: List<Bars>)
             ),
             labelProperties = LabelProperties(
                 enabled = true,
-                textStyle = TextStyle(color = MaterialTheme.colorScheme.onPrimary),
+                textStyle = TextStyle(color = MaterialTheme.colorScheme.onSurface),
                 rotation = LabelProperties.Rotation(
                     mode = LabelProperties.Rotation.Mode.Force,
                     degree = -45f
@@ -218,7 +218,7 @@ fun DashboardChart(totalRooms: Double, barsData: List<Bars>)
             ),
             labelHelperProperties = LabelHelperProperties(
                 enabled = true,
-                textStyle = TextStyle(MaterialTheme.colorScheme.onPrimary)
+                textStyle = TextStyle(MaterialTheme.colorScheme.onSurface)
             ),
             animationSpec = spring(
                 dampingRatio = Spring.DampingRatioMediumBouncy,

@@ -88,8 +88,8 @@ fun ProfileContent(sourceActivity: Activity, email: String, modifier: Modifier =
                 }
         )
         Spacer(Modifier.size(16.dp))
-        Text(text = "${firstName.capitalize()} ${lastName.uppercase()}", fontSize = MaterialTheme.typography.displaySmall.fontSize, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onPrimary)
-        Text(text = "($email)", color = MaterialTheme.colorScheme.onPrimary)
+        Text(text = "${firstName.capitalize()} ${lastName.uppercase()}", fontSize = MaterialTheme.typography.displaySmall.fontSize, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface)
+        Text(text = "($email)", color = MaterialTheme.colorScheme.onSurface)
         Spacer(Modifier.size(48.dp))
         ElevatedButton(
             colors = ButtonDefaults.buttonColors(

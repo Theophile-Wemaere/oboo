@@ -88,7 +88,7 @@ fun OTPScreenContent(sourceActivity: Activity, email: String, modifier: Modifier
                 contentDescription = "Oboo logo",
                 modifier = Modifier.size(250.dp)
             )
-            Text(text = stringResource(R.string.app_name), fontSize = 48.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onPrimary)
+            Text(text = stringResource(R.string.app_name), fontSize = 48.sp, fontWeight = FontWeight.Bold, color = MaterialTheme.colorScheme.onSurface)
         }
         Spacer(Modifier.size(48.dp))
 
@@ -113,8 +113,8 @@ fun OTPScreenContent(sourceActivity: Activity, email: String, modifier: Modifier
         Spacer(Modifier.size(16.dp))
         Column(horizontalAlignment = Alignment.CenterHorizontally)
         {
-            Text(stringResource(R.string.text_PleaseEnterOTP), color = MaterialTheme.colorScheme.onPrimary)
-            Text(text = email, textDecoration = TextDecoration.Underline, color = MaterialTheme.colorScheme.onPrimary)
+            Text(stringResource(R.string.text_PleaseEnterOTP), color = MaterialTheme.colorScheme.onSurface)
+            Text(text = email, textDecoration = TextDecoration.Underline, color = MaterialTheme.colorScheme.onSurface)
         }
         Spacer(Modifier.size(16.dp))
         ElevatedButton(

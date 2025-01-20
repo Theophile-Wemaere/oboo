@@ -17,7 +17,7 @@
     <string name="navMenu_Floors">Stockwerke</string>
     <string name="navMenu_Rooms">Zimmer</string>
     <string name="navMenu_Profile">Profil</string>
-    <string name="screenTitle_Dashboard">Armaturenbrett</string>
+    <string name="screenTitle_Dashboard">Heim</string>
     <string name="tabInformation">Information</string>
     <string name="tabTimetable">Zeitplan</string>
     <string name="floorName_GroundFloor">Erdgeschoss</string>
